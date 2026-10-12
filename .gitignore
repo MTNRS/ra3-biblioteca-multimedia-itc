@@ -1,0 +1,8 @@
+node_modules/
+.vscode/
+.idea/
+*.mp3
+*.wav
+*.mp4
+*.webm
+*.log

@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MediaLab ITC</title>
+  <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+  <header>
+    <p class="marca">integra tech consulting · laboratorio local</p>
+    <h1>MediaLab</h1>
+    <p>Biblioteca, reproducción y procesamiento multimedia en el navegador.</p>
+  </header>
+
+  <main>
+    <section class="biblioteca" aria-labelledby="tituloBiblioteca">
+      <div class="cabecera-seccion">
+        <h2 id="tituloBiblioteca">Biblioteca local</h2>
+        <label class="boton" for="selectorArchivo">Añadir archivo</label>
+        <input id="selectorArchivo" type="file" accept="audio/*,video/*" hidden>
+      </div>
+      <p class="ayuda">Audio: MP3, WAV o WebM. Vídeo: MP4 o WebM. Los archivos no salen de tu equipo.</p>
+      <ol id="listaMedios" class="lista"></ol>
+    </section>
+
+    <section class="reproductor" aria-labelledby="tituloReproductor">
+      <h2 id="tituloReproductor">Reproductor personalizado</h2>
+      <video id="medio" preload="metadata" playsinline></video>
+      <div class="controles-principales">
+        <button id="anterior" aria-label="Retroceder cinco segundos">−5 s</button>
+        <button id="reproducir">▶ Reproducir</button>
+        <button id="siguiente" aria-label="Avanzar cinco segundos">+5 s</button>
+        <span id="tiempo">00:00 / 00:00</span>
+      </div>
+      <input id="progreso" type="range" min="0" max="100" value="0" aria-label="Posición de reproducción">
+
+      <canvas id="visualizador" width="900" height="210" aria-label="Visualización animada del audio"></canvas>
+
+      <div class="ajustes">
+        <label>Volumen <input id="volumen" type="range" min="0" max="1" value="0.8" step="0.05"></label>
+        <label>Velocidad
+          <select id="velocidad"><option value="0.75">0,75×</option><option value="1" selected>1×</option><option value="1.25">1,25×</option><option value="1.5">1,5×</option></select>
+        </label>
+        <label>Filtro
+          <select id="filtro"><option value="none">Sin filtro</option><option value="lowpass">Pasa bajos</option><option value="highpass">Pasa altos</option></select>
+        </label>
+      </div>
+    </section>
+
+    <section class="herramientas" aria-labelledby="tituloHerramientas">
+      <h2 id="tituloHerramientas">Herramientas multimedia</h2>
+      <p id="estado">Selecciona un archivo de tu biblioteca para empezar.</p>
+      <div class="grupo-botones">
+        <button id="grabar">● Grabar nota</button>
+        <button id="detener" disabled>■ Detener grabación</button>
+        <button id="exportar" disabled>Exportar WAV</button>
+      </div>
+      <details>
+        <summary>¿Qué usa esta aplicación?</summary>
+        <p>HTMLMediaElement para reproducción y eventos, Web Audio API para procesamiento, MediaRecorder para captura, Blob para almacenar temporalmente, FileReader/ArrayBuffer para conversión, y Canvas con requestAnimationFrame para la animación.</p>
+      </details>
+    </section>
+  </main>
+  <script src="aplicacion.js"></script>
+</body>
+</html>
